@@ -21,16 +21,19 @@ import javax.swing.Timer;
 import org.json.JSONObject;
 
 public class FlightStatus {
-	public JFrame f = new JFrame();
-	public JPanel p = new JPanel();
-	public JLabel speedLabel = new JLabel("Speed: null");
-	public JLabel timeLabel = new JLabel("Time remaining: null");
-	public JLabel destintionLabel = new JLabel("Destination: /dev/null");
-	public JLabel altitudeLable = new JLabel("Altitude: null");
-	public JLabel directionLable = new JLabel("Direction: null");
-	public JProgressBar progressBar = new JProgressBar(0, 100);
+	private JFrame f = new JFrame();
+	private JPanel p = new JPanel();
+	private JLabel speedLabel = new JLabel("Speed: null");
+	private JLabel timeLabel = new JLabel("Time remaining: null");
+	private JLabel destintionLabel = new JLabel("Destination: /dev/null");
+	private JLabel altitudeLable = new JLabel("Altitude: null");
+	private JLabel directionLable = new JLabel("Direction: null");
+	private JProgressBar progressBar = new JProgressBar(0, 100);
+	private JLabel maxSpeedLabel = new JLabel("Max speed: null");
 
-	public Timer updateTimer = new Timer(1000, new ActionListener() {
+	private int maxSpeed = 0;
+
+	private Timer updateTimer = new Timer(1000, new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			update();
@@ -72,6 +75,7 @@ public class FlightStatus {
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		p.add(destintionLabel);
 		p.add(speedLabel);
+		p.add(maxSpeedLabel);
 		p.add(altitudeLable);
 		p.add(directionLable);
 		p.add(timeLabel);
@@ -79,7 +83,7 @@ public class FlightStatus {
 
 		f.setTitle("NorwegainAir Flight status");
 		f.setResizable(true);
-		f.setSize(350, 164);
+		f.setSize(350, 180);
 		f.setLocationRelativeTo(null);
 		f.add(p);
 		f.setVisible(true);
@@ -127,6 +131,16 @@ public class FlightStatus {
 			progressBar.setString(pcent_flt_complete + "%");
 
 			speedLabel.setText("Speed: " + speed);
+
+			try {
+				int s = Integer.parseInt(speed.replace(" km/h", ""));
+				if(maxSpeed < s) {
+					maxSpeed = s;
+					maxSpeedLabel.setText("Max speed: " + maxSpeed + " km/h");
+				}
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			}
 
 			timeLabel.setText("Time remaining: " + timeRemaining);
 
