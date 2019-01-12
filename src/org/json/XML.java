@@ -112,8 +112,7 @@ public class XML {
 	 * &apos; <small>(single quote / apostrophe)</small> is replaced by &amp;apos;
 	 * </pre>
 	 * 
-	 * @param string
-	 *            The string to be escaped.
+	 * @param string The string to be escaped.
 	 * @return The escaped string.
 	 */
 	public static String escape(String string) {
@@ -149,8 +148,7 @@ public class XML {
 	}
 
 	/**
-	 * @param cp
-	 *            code point to test
+	 * @param cp code point to test
 	 * @return true if the code point is not valid for an XML
 	 */
 	private static boolean mustEscape(int cp) {
@@ -172,8 +170,7 @@ public class XML {
 	/**
 	 * Removes XML escapes from the string.
 	 * 
-	 * @param string
-	 *            string to remove escapes from
+	 * @param string string to remove escapes from
 	 * @return string with converted entities
 	 */
 	public static String unescape(String string) {
@@ -204,10 +201,8 @@ public class XML {
 	 * Throw an exception if the string contains whitespace. Whitespace is not
 	 * allowed in tagNames and attributes.
 	 * 
-	 * @param string
-	 *            A string.
-	 * @throws JSONException
-	 *             Thrown if the string contains whitespace or is empty.
+	 * @param string A string.
+	 * @throws JSONException Thrown if the string contains whitespace or is empty.
 	 */
 	public static void noSpace(String string) throws JSONException {
 		int i, length = string.length();
@@ -224,12 +219,9 @@ public class XML {
 	/**
 	 * Scan the content following the named tag, attaching it to the context.
 	 * 
-	 * @param x
-	 *            The XMLTokener containing the source string.
-	 * @param context
-	 *            The JSONObject that will include the new material.
-	 * @param name
-	 *            The tag name.
+	 * @param x       The XMLTokener containing the source string.
+	 * @param context The JSONObject that will include the new material.
+	 * @param name    The tag name.
 	 * @return true if the close tag is processed.
 	 * @throws JSONException
 	 */
@@ -388,8 +380,7 @@ public class XML {
 	/**
 	 * This method is the same as {@link JSONObject#stringToValue(String)}.
 	 * 
-	 * @param string
-	 *            String to convert
+	 * @param string String to convert
 	 * @return JSON value of this string or the string
 	 */
 	// To maintain compatibility with the Android API, this method is a direct copy
@@ -449,11 +440,9 @@ public class XML {
 	 * JSONArrays. Content text may be placed in a "content" member. Comments,
 	 * prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param string
-	 *            The source string.
+	 * @param string The source string.
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown if there is an errors while parsing the string
+	 * @throws JSONException Thrown if there is an errors while parsing the string
 	 */
 	public static JSONObject toJSONObject(String string) throws JSONException {
 		return toJSONObject(string, false);
@@ -469,11 +458,9 @@ public class XML {
 	 * Content text may be placed in a "content" member. Comments, prologs, DTDs,
 	 * and <code>&lt;[ [ ]]></code> are ignored.
 	 *
-	 * @param reader
-	 *            The XML source reader.
+	 * @param reader The XML source reader.
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown if there is an errors while parsing the string
+	 * @throws JSONException Thrown if there is an errors while parsing the string
 	 */
 	public static JSONObject toJSONObject(Reader reader) throws JSONException {
 		return toJSONObject(reader, false);
@@ -492,14 +479,11 @@ public class XML {
 	 * All values are converted as strings, for 1, 01, 29.0 will not be coerced to
 	 * numbers but will instead be the exact value as seen in the XML document.
 	 *
-	 * @param reader
-	 *            The XML source reader.
-	 * @param keepStrings
-	 *            If true, then values will not be coerced into boolean or numeric
-	 *            values and will instead be left as strings
+	 * @param reader      The XML source reader.
+	 * @param keepStrings If true, then values will not be coerced into boolean or
+	 *                    numeric values and will instead be left as strings
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown if there is an errors while parsing the string
+	 * @throws JSONException Thrown if there is an errors while parsing the string
 	 */
 	public static JSONObject toJSONObject(Reader reader, boolean keepStrings) throws JSONException {
 		JSONObject jo = new JSONObject();
@@ -526,14 +510,11 @@ public class XML {
 	 * All values are converted as strings, for 1, 01, 29.0 will not be coerced to
 	 * numbers but will instead be the exact value as seen in the XML document.
 	 * 
-	 * @param string
-	 *            The source string.
-	 * @param keepStrings
-	 *            If true, then values will not be coerced into boolean or numeric
-	 *            values and will instead be left as strings
+	 * @param string      The source string.
+	 * @param keepStrings If true, then values will not be coerced into boolean or
+	 *                    numeric values and will instead be left as strings
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown if there is an errors while parsing the string
+	 * @throws JSONException Thrown if there is an errors while parsing the string
 	 */
 	public static JSONObject toJSONObject(String string, boolean keepStrings) throws JSONException {
 		return toJSONObject(new StringReader(string), keepStrings);
@@ -542,11 +523,9 @@ public class XML {
 	/**
 	 * Convert a JSONObject into a well-formed, element-normal XML string.
 	 * 
-	 * @param object
-	 *            A JSONObject.
+	 * @param object A JSONObject.
 	 * @return A string.
-	 * @throws JSONException
-	 *             Thrown if there is an error parsing the string
+	 * @throws JSONException Thrown if there is an error parsing the string
 	 */
 	public static String toString(Object object) throws JSONException {
 		return toString(object, null);
@@ -555,13 +534,10 @@ public class XML {
 	/**
 	 * Convert a JSONObject into a well-formed, element-normal XML string.
 	 * 
-	 * @param object
-	 *            A JSONObject.
-	 * @param tagName
-	 *            The optional name of the enclosing tag.
+	 * @param object  A JSONObject.
+	 * @param tagName The optional name of the enclosing tag.
 	 * @return A string.
-	 * @throws JSONException
-	 *             Thrown if there is an error parsing the string
+	 * @throws JSONException Thrown if there is an error parsing the string
 	 */
 	public static String toString(final Object object, final String tagName) throws JSONException {
 		StringBuilder sb = new StringBuilder();

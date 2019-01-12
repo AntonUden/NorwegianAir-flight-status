@@ -36,15 +36,11 @@ public class JSONML {
 	/**
 	 * Parse XML values and store them in a JSONArray.
 	 * 
-	 * @param x
-	 *            The XMLTokener containing the source string.
-	 * @param arrayForm
-	 *            true if array form, false if object form.
-	 * @param ja
-	 *            The JSONArray that is containing the current tag or null if we are
-	 *            at the outermost level.
-	 * @param keepStrings
-	 *            Don't type-convert text nodes and attribute values
+	 * @param x           The XMLTokener containing the source string.
+	 * @param arrayForm   true if array form, false if object form.
+	 * @param ja          The JSONArray that is containing the current tag or null
+	 *                    if we are at the outermost level.
+	 * @param keepStrings Don't type-convert text nodes and attribute values
 	 * @return A JSONArray if the value is the outermost tag, otherwise null.
 	 * @throws JSONException
 	 */
@@ -233,11 +229,9 @@ public class JSONML {
 	 * contains children, then strings and JSONArrays will represent the child tags.
 	 * Comments, prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param string
-	 *            The source string.
+	 * @param string The source string.
 	 * @return A JSONArray containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONArray
+	 * @throws JSONException Thrown on error converting to a JSONArray
 	 */
 	public static JSONArray toJSONArray(String string) throws JSONException {
 		return (JSONArray) parse(new XMLTokener(string), true, null, false);
@@ -253,14 +247,11 @@ public class JSONML {
 	 * node or attribute value to any type but just leaves it as a string. Comments,
 	 * prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param string
-	 *            The source string.
-	 * @param keepStrings
-	 *            If true, then values will not be coerced into boolean or numeric
-	 *            values and will instead be left as strings
+	 * @param string      The source string.
+	 * @param keepStrings If true, then values will not be coerced into boolean or
+	 *                    numeric values and will instead be left as strings
 	 * @return A JSONArray containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONArray
+	 * @throws JSONException Thrown on error converting to a JSONArray
 	 */
 	public static JSONArray toJSONArray(String string, boolean keepStrings) throws JSONException {
 		return (JSONArray) parse(new XMLTokener(string), true, null, keepStrings);
@@ -276,14 +267,11 @@ public class JSONML {
 	 * convert any text node or attribute value to any type but just leaves it as a
 	 * string. Comments, prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param x
-	 *            An XMLTokener.
-	 * @param keepStrings
-	 *            If true, then values will not be coerced into boolean or numeric
-	 *            values and will instead be left as strings
+	 * @param x           An XMLTokener.
+	 * @param keepStrings If true, then values will not be coerced into boolean or
+	 *                    numeric values and will instead be left as strings
 	 * @return A JSONArray containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONArray
+	 * @throws JSONException Thrown on error converting to a JSONArray
 	 */
 	public static JSONArray toJSONArray(XMLTokener x, boolean keepStrings) throws JSONException {
 		return (JSONArray) parse(x, true, null, keepStrings);
@@ -298,11 +286,9 @@ public class JSONML {
 	 * content and tags. Comments, prologs, DTDs, and <code>&lt;[ [ ]]></code> are
 	 * ignored.
 	 * 
-	 * @param x
-	 *            An XMLTokener.
+	 * @param x An XMLTokener.
 	 * @return A JSONArray containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONArray
+	 * @throws JSONException Thrown on error converting to a JSONArray
 	 */
 	public static JSONArray toJSONArray(XMLTokener x) throws JSONException {
 		return (JSONArray) parse(x, true, null, false);
@@ -318,11 +304,9 @@ public class JSONML {
 	 * 
 	 * Comments, prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param string
-	 *            The XML source text.
+	 * @param string The XML source text.
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONObject
+	 * @throws JSONException Thrown on error converting to a JSONObject
 	 */
 	public static JSONObject toJSONObject(String string) throws JSONException {
 		return (JSONObject) parse(new XMLTokener(string), false, null, false);
@@ -338,14 +322,11 @@ public class JSONML {
 	 * 
 	 * Comments, prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param string
-	 *            The XML source text.
-	 * @param keepStrings
-	 *            If true, then values will not be coerced into boolean or numeric
-	 *            values and will instead be left as strings
+	 * @param string      The XML source text.
+	 * @param keepStrings If true, then values will not be coerced into boolean or
+	 *                    numeric values and will instead be left as strings
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONObject
+	 * @throws JSONException Thrown on error converting to a JSONObject
 	 */
 	public static JSONObject toJSONObject(String string, boolean keepStrings) throws JSONException {
 		return (JSONObject) parse(new XMLTokener(string), false, null, keepStrings);
@@ -361,11 +342,9 @@ public class JSONML {
 	 * 
 	 * Comments, prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param x
-	 *            An XMLTokener of the XML source text.
+	 * @param x An XMLTokener of the XML source text.
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONObject
+	 * @throws JSONException Thrown on error converting to a JSONObject
 	 */
 	public static JSONObject toJSONObject(XMLTokener x) throws JSONException {
 		return (JSONObject) parse(x, false, null, false);
@@ -381,14 +360,11 @@ public class JSONML {
 	 * 
 	 * Comments, prologs, DTDs, and <code>&lt;[ [ ]]></code> are ignored.
 	 * 
-	 * @param x
-	 *            An XMLTokener of the XML source text.
-	 * @param keepStrings
-	 *            If true, then values will not be coerced into boolean or numeric
-	 *            values and will instead be left as strings
+	 * @param x           An XMLTokener of the XML source text.
+	 * @param keepStrings If true, then values will not be coerced into boolean or
+	 *                    numeric values and will instead be left as strings
 	 * @return A JSONObject containing the structured data from the XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a JSONObject
+	 * @throws JSONException Thrown on error converting to a JSONObject
 	 */
 	public static JSONObject toJSONObject(XMLTokener x, boolean keepStrings) throws JSONException {
 		return (JSONObject) parse(x, false, null, keepStrings);
@@ -397,11 +373,9 @@ public class JSONML {
 	/**
 	 * Reverse the JSONML transformation, making an XML text from a JSONArray.
 	 * 
-	 * @param ja
-	 *            A JSONArray.
+	 * @param ja A JSONArray.
 	 * @return An XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a string
+	 * @throws JSONException Thrown on error converting to a string
 	 */
 	public static String toString(JSONArray ja) throws JSONException {
 		int i;
@@ -480,11 +454,9 @@ public class JSONML {
 	 * must have a "childNodes" property containing an array of objects. The other
 	 * properties are attributes with string values.
 	 * 
-	 * @param jo
-	 *            A JSONObject.
+	 * @param jo A JSONObject.
 	 * @return An XML string.
-	 * @throws JSONException
-	 *             Thrown on error converting to a string
+	 * @throws JSONException Thrown on error converting to a string
 	 */
 	public static String toString(JSONObject jo) throws JSONException {
 		StringBuilder sb = new StringBuilder();

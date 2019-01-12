@@ -117,8 +117,7 @@ public class JSONObject {
 		/**
 		 * A Null object is equal to the null value and to itself.
 		 *
-		 * @param object
-		 *            An object to test for nullness.
+		 * @param object An object to test for nullness.
 		 * @return true if the object parameter is the JSONObject.NULL object or null.
 		 */
 		@Override
@@ -178,10 +177,8 @@ public class JSONObject {
 	 * strings is used to identify the keys that should be copied. Missing keys are
 	 * ignored.
 	 *
-	 * @param jo
-	 *            A JSONObject.
-	 * @param names
-	 *            An array of strings.
+	 * @param jo    A JSONObject.
+	 * @param names An array of strings.
 	 */
 	public JSONObject(JSONObject jo, String[] names) {
 		this(names.length);
@@ -196,11 +193,9 @@ public class JSONObject {
 	/**
 	 * Construct a JSONObject from a JSONTokener.
 	 *
-	 * @param x
-	 *            A JSONTokener object containing the source string.
-	 * @throws JSONException
-	 *             If there is a syntax error in the source string or a duplicated
-	 *             key.
+	 * @param x A JSONTokener object containing the source string.
+	 * @throws JSONException If there is a syntax error in the source string or a
+	 *                       duplicated key.
 	 */
 	public JSONObject(JSONTokener x) throws JSONException {
 		this();
@@ -265,13 +260,10 @@ public class JSONObject {
 	/**
 	 * Construct a JSONObject from a Map.
 	 *
-	 * @param m
-	 *            A map object that can be used to initialize the contents of the
-	 *            JSONObject.
-	 * @throws JSONException
-	 *             If a value in the map is non-finite number.
-	 * @throws NullPointerException
-	 *             If a key in the map is <code>null</code>
+	 * @param m A map object that can be used to initialize the contents of the
+	 *          JSONObject.
+	 * @throws JSONException        If a value in the map is non-finite number.
+	 * @throws NullPointerException If a key in the map is <code>null</code>
 	 */
 	public JSONObject(Map<?, ?> m) {
 		if (m == null) {
@@ -354,9 +346,8 @@ public class JSONObject {
 	 * </pre>
 	 * <p>
 	 * 
-	 * @param bean
-	 *            An object that has getter methods that should be used to make a
-	 *            JSONObject.
+	 * @param bean An object that has getter methods that should be used to make a
+	 *             JSONObject.
 	 */
 	public JSONObject(Object bean) {
 		this();
@@ -370,12 +361,10 @@ public class JSONObject {
 	 * the object. If a key is not found or not visible, then it will not be copied
 	 * into the new JSONObject.
 	 *
-	 * @param object
-	 *            An object that has fields that should be used to make a
-	 *            JSONObject.
-	 * @param names
-	 *            An array of strings, the names of the fields to be obtained from
-	 *            the object.
+	 * @param object An object that has fields that should be used to make a
+	 *               JSONObject.
+	 * @param names  An array of strings, the names of the fields to be obtained
+	 *               from the object.
 	 */
 	public JSONObject(Object object, String names[]) {
 		this(names.length);
@@ -393,13 +382,11 @@ public class JSONObject {
 	 * Construct a JSONObject from a source JSON text string. This is the most
 	 * commonly used JSONObject constructor.
 	 *
-	 * @param source
-	 *            A string beginning with <code>{</code>&nbsp;<small>(left
-	 *            brace)</small> and ending with <code>}</code> &nbsp;<small>(right
-	 *            brace)</small>.
-	 * @exception JSONException
-	 *                If there is a syntax error in the source string or a
-	 *                duplicated key.
+	 * @param source A string beginning with <code>{</code>&nbsp;<small>(left
+	 *               brace)</small> and ending with <code>}</code>
+	 *               &nbsp;<small>(right brace)</small>.
+	 * @exception JSONException If there is a syntax error in the source string or a
+	 *                          duplicated key.
 	 */
 	public JSONObject(String source) throws JSONException {
 		this(new JSONTokener(source));
@@ -408,12 +395,9 @@ public class JSONObject {
 	/**
 	 * Construct a JSONObject from a ResourceBundle.
 	 *
-	 * @param baseName
-	 *            The ResourceBundle base name.
-	 * @param locale
-	 *            The Locale to load the ResourceBundle for.
-	 * @throws JSONException
-	 *             If any JSONExceptions are detected.
+	 * @param baseName The ResourceBundle base name.
+	 * @param locale   The Locale to load the ResourceBundle for.
+	 * @throws JSONException If any JSONExceptions are detected.
 	 */
 	public JSONObject(String baseName, Locale locale) throws JSONException {
 		this();
@@ -452,8 +436,7 @@ public class JSONObject {
 	 * library internal calls where we know, or at least can best guess, how big
 	 * this JSONObject will be.
 	 * 
-	 * @param initialCapacity
-	 *            initial capacity of the internal map.
+	 * @param initialCapacity initial capacity of the internal map.
 	 */
 	protected JSONObject(int initialCapacity) {
 		this.map = new HashMap<String, Object>(initialCapacity);
@@ -470,15 +453,11 @@ public class JSONObject {
 	 * will be the same as using put. But if multiple values are accumulated, then
 	 * the result will be like append.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            An object to be accumulated under the key.
+	 * @param key   A key string.
+	 * @param value An object to be accumulated under the key.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject accumulate(String key, Object value) throws JSONException {
 		testValidity(value);
@@ -499,16 +478,13 @@ public class JSONObject {
 	 * JSONArray containing the value parameter. If the key was already associated
 	 * with a JSONArray, then the value parameter is appended to it.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            An object to be accumulated under the key.
+	 * @param key   A key string.
+	 * @param value An object to be accumulated under the key.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number or if the current value
-	 *             associated with the key is not a JSONArray.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number or if the
+	 *                              current value associated with the key is not a
+	 *                              JSONArray.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject append(String key, Object value) throws JSONException {
 		testValidity(value);
@@ -527,8 +503,7 @@ public class JSONObject {
 	 * Produce a string from a double. The string "null" will be returned if the
 	 * number is not finite.
 	 *
-	 * @param d
-	 *            A double.
+	 * @param d A double.
 	 * @return A String.
 	 */
 	public static String doubleToString(double d) {
@@ -553,11 +528,9 @@ public class JSONObject {
 	/**
 	 * Get the value object associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The object associated with the key.
-	 * @throws JSONException
-	 *             if the key is not found.
+	 * @throws JSONException if the key is not found.
 	 */
 	public Object get(String key) throws JSONException {
 		if (key == null) {
@@ -573,14 +546,11 @@ public class JSONObject {
 	/**
 	 * Get the enum value associated with a key.
 	 * 
-	 * @param clazz
-	 *            The type of enum to retrieve.
-	 * @param key
-	 *            A key string.
+	 * @param clazz The type of enum to retrieve.
+	 * @param key   A key string.
 	 * @return The enum value associated with the key
-	 * @throws JSONException
-	 *             if the key is not found or if the value cannot be converted to an
-	 *             enum.
+	 * @throws JSONException if the key is not found or if the value cannot be
+	 *                       converted to an enum.
 	 */
 	public <E extends Enum<E>> E getEnum(Class<E> clazz, String key) throws JSONException {
 		E val = optEnum(clazz, key);
@@ -596,11 +566,10 @@ public class JSONObject {
 	/**
 	 * Get the boolean value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The truth.
-	 * @throws JSONException
-	 *             if the value is not a Boolean or the String "true" or "false".
+	 * @throws JSONException if the value is not a Boolean or the String "true" or
+	 *                       "false".
 	 */
 	public boolean getBoolean(String key) throws JSONException {
 		Object object = this.get(key);
@@ -615,12 +584,10 @@ public class JSONObject {
 	/**
 	 * Get the BigInteger value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The numeric value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value cannot be converted to
-	 *             BigInteger.
+	 * @throws JSONException if the key is not found or if the value cannot be
+	 *                       converted to BigInteger.
 	 */
 	public BigInteger getBigInteger(String key) throws JSONException {
 		Object object = this.get(key);
@@ -634,12 +601,10 @@ public class JSONObject {
 	/**
 	 * Get the BigDecimal value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The numeric value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value cannot be converted to
-	 *             BigDecimal.
+	 * @throws JSONException if the key is not found or if the value cannot be
+	 *                       converted to BigDecimal.
 	 */
 	public BigDecimal getBigDecimal(String key) throws JSONException {
 		Object object = this.get(key);
@@ -656,12 +621,10 @@ public class JSONObject {
 	/**
 	 * Get the double value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The numeric value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value is not a Number object
-	 *             and cannot be converted to a number.
+	 * @throws JSONException if the key is not found or if the value is not a Number
+	 *                       object and cannot be converted to a number.
 	 */
 	public double getDouble(String key) throws JSONException {
 		Object object = this.get(key);
@@ -675,12 +638,10 @@ public class JSONObject {
 	/**
 	 * Get the float value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The numeric value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value is not a Number object
-	 *             and cannot be converted to a number.
+	 * @throws JSONException if the key is not found or if the value is not a Number
+	 *                       object and cannot be converted to a number.
 	 */
 	public float getFloat(String key) throws JSONException {
 		Object object = this.get(key);
@@ -694,12 +655,10 @@ public class JSONObject {
 	/**
 	 * Get the Number value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The numeric value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value is not a Number object
-	 *             and cannot be converted to a number.
+	 * @throws JSONException if the key is not found or if the value is not a Number
+	 *                       object and cannot be converted to a number.
 	 */
 	public Number getNumber(String key) throws JSONException {
 		Object object = this.get(key);
@@ -716,12 +675,10 @@ public class JSONObject {
 	/**
 	 * Get the int value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The integer value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value cannot be converted to an
-	 *             integer.
+	 * @throws JSONException if the key is not found or if the value cannot be
+	 *                       converted to an integer.
 	 */
 	public int getInt(String key) throws JSONException {
 		Object object = this.get(key);
@@ -735,11 +692,10 @@ public class JSONObject {
 	/**
 	 * Get the JSONArray value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return A JSONArray which is the value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value is not a JSONArray.
+	 * @throws JSONException if the key is not found or if the value is not a
+	 *                       JSONArray.
 	 */
 	public JSONArray getJSONArray(String key) throws JSONException {
 		Object object = this.get(key);
@@ -752,11 +708,10 @@ public class JSONObject {
 	/**
 	 * Get the JSONObject value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return A JSONObject which is the value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value is not a JSONObject.
+	 * @throws JSONException if the key is not found or if the value is not a
+	 *                       JSONObject.
 	 */
 	public JSONObject getJSONObject(String key) throws JSONException {
 		Object object = this.get(key);
@@ -769,12 +724,10 @@ public class JSONObject {
 	/**
 	 * Get the long value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The long value.
-	 * @throws JSONException
-	 *             if the key is not found or if the value cannot be converted to a
-	 *             long.
+	 * @throws JSONException if the key is not found or if the value cannot be
+	 *                       converted to a long.
 	 */
 	public long getLong(String key) throws JSONException {
 		Object object = this.get(key);
@@ -822,11 +775,9 @@ public class JSONObject {
 	/**
 	 * Get the string associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return A string which is the value.
-	 * @throws JSONException
-	 *             if there is no string value for the key.
+	 * @throws JSONException if there is no string value for the key.
 	 */
 	public String getString(String key) throws JSONException {
 		Object object = this.get(key);
@@ -839,8 +790,7 @@ public class JSONObject {
 	/**
 	 * Determine if the JSONObject contains a specific key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return true if the key exists in the JSONObject.
 	 */
 	public boolean has(String key) {
@@ -852,12 +802,10 @@ public class JSONObject {
 	 * one with a value of 1. If there is such a property, and if it is an Integer,
 	 * Long, Double, or Float, then add one to it.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return this.
-	 * @throws JSONException
-	 *             If there is already a property with this name that is not an
-	 *             Integer, Long, Double, or Float.
+	 * @throws JSONException If there is already a property with this name that is
+	 *                       not an Integer, Long, Double, or Float.
 	 */
 	public JSONObject increment(String key) throws JSONException {
 		Object value = this.opt(key);
@@ -885,8 +833,7 @@ public class JSONObject {
 	 * Determine if the value associated with the key is <code>null</code> or if
 	 * there is no value.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return true if there is no value associated with the key or if the value is
 	 *         the JSONObject.NULL object.
 	 */
@@ -968,11 +915,9 @@ public class JSONObject {
 	/**
 	 * Produce a string from a Number.
 	 *
-	 * @param number
-	 *            A Number
+	 * @param number A Number
 	 * @return A String.
-	 * @throws JSONException
-	 *             If n is a non-finite number.
+	 * @throws JSONException If n is a non-finite number.
 	 */
 	public static String numberToString(Number number) throws JSONException {
 		if (number == null) {
@@ -997,8 +942,7 @@ public class JSONObject {
 	/**
 	 * Get an optional value associated with a key.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return An object which is the value, or null if there is no value.
 	 */
 	public Object opt(String key) {
@@ -1008,10 +952,8 @@ public class JSONObject {
 	/**
 	 * Get the enum value associated with a key.
 	 * 
-	 * @param clazz
-	 *            The type of enum to retrieve.
-	 * @param key
-	 *            A key string.
+	 * @param clazz The type of enum to retrieve.
+	 * @param key   A key string.
 	 * @return The enum value associated with the key or null if not found
 	 */
 	public <E extends Enum<E>> E optEnum(Class<E> clazz, String key) {
@@ -1021,12 +963,9 @@ public class JSONObject {
 	/**
 	 * Get the enum value associated with a key.
 	 * 
-	 * @param clazz
-	 *            The type of enum to retrieve.
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default in case the value is not found
+	 * @param clazz        The type of enum to retrieve.
+	 * @param key          A key string.
+	 * @param defaultValue The default in case the value is not found
 	 * @return The enum value associated with the key or defaultValue if the value
 	 *         is not found or cannot be assigned to <code>clazz</code>
 	 */
@@ -1054,8 +993,7 @@ public class JSONObject {
 	 * Get an optional boolean associated with a key. It returns false if there is
 	 * no such key, or if the value is not Boolean.TRUE or the String "true".
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The truth.
 	 */
 	public boolean optBoolean(String key) {
@@ -1067,10 +1005,8 @@ public class JSONObject {
 	 * there is no such key, or if it is not a Boolean or the String "true" or
 	 * "false" (case insensitive).
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return The truth.
 	 */
 	public boolean optBoolean(String key, boolean defaultValue) {
@@ -1094,10 +1030,8 @@ public class JSONObject {
 	 * there is no such key or if its value is not a number. If the value is a
 	 * string, an attempt will be made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return An object which is the value.
 	 */
 	public BigDecimal optBigDecimal(String key, BigDecimal defaultValue) {
@@ -1130,10 +1064,8 @@ public class JSONObject {
 	 * there is no such key or if its value is not a number. If the value is a
 	 * string, an attempt will be made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return An object which is the value.
 	 */
 	public BigInteger optBigInteger(String key, BigInteger defaultValue) {
@@ -1175,8 +1107,7 @@ public class JSONObject {
 	 * or if its value is not a number. If the value is a string, an attempt will be
 	 * made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A string which is the key.
+	 * @param key A string which is the key.
 	 * @return An object which is the value.
 	 */
 	public double optDouble(String key) {
@@ -1188,10 +1119,8 @@ public class JSONObject {
 	 * no such key or if its value is not a number. If the value is a string, an
 	 * attempt will be made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return An object which is the value.
 	 */
 	public double optDouble(String key, double defaultValue) {
@@ -1217,8 +1146,7 @@ public class JSONObject {
 	 * there is no value for the index, or if the value is not a number and cannot
 	 * be converted to a number.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return The value.
 	 */
 	public float optFloat(String key) {
@@ -1230,10 +1158,8 @@ public class JSONObject {
 	 * returned if there is no value for the index, or if the value is not a number
 	 * and cannot be converted to a number.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default value.
+	 * @param key          A key string.
+	 * @param defaultValue The default value.
 	 * @return The value.
 	 */
 	public float optFloat(String key, float defaultValue) {
@@ -1259,8 +1185,7 @@ public class JSONObject {
 	 * key or if the value is not a number. If the value is a string, an attempt
 	 * will be made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return An object which is the value.
 	 */
 	public int optInt(String key) {
@@ -1272,10 +1197,8 @@ public class JSONObject {
 	 * no such key or if the value is not a number. If the value is a string, an
 	 * attempt will be made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return An object which is the value.
 	 */
 	public int optInt(String key, int defaultValue) {
@@ -1301,8 +1224,7 @@ public class JSONObject {
 	 * Get an optional JSONArray associated with a key. It returns null if there is
 	 * no such key, or if its value is not a JSONArray.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return A JSONArray which is the value.
 	 */
 	public JSONArray optJSONArray(String key) {
@@ -1314,8 +1236,7 @@ public class JSONObject {
 	 * Get an optional JSONObject associated with a key. It returns null if there is
 	 * no such key, or if its value is not a JSONObject.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return A JSONObject which is the value.
 	 */
 	public JSONObject optJSONObject(String key) {
@@ -1328,8 +1249,7 @@ public class JSONObject {
 	 * key or if the value is not a number. If the value is a string, an attempt
 	 * will be made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return An object which is the value.
 	 */
 	public long optLong(String key) {
@@ -1341,10 +1261,8 @@ public class JSONObject {
 	 * no such key or if the value is not a number. If the value is a string, an
 	 * attempt will be made to evaluate it as a number.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return An object which is the value.
 	 */
 	public long optLong(String key, long defaultValue) {
@@ -1373,8 +1291,7 @@ public class JSONObject {
 	 * ({@link BigDecimal}). This method would be used in cases where type coercion
 	 * of the number value is unwanted.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return An object which is the value.
 	 */
 	public Number optNumber(String key) {
@@ -1387,10 +1304,8 @@ public class JSONObject {
 	 * string, an attempt will be made to evaluate it as a number. This method would
 	 * be used in cases where type coercion of the number value is unwanted.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return An object which is the value.
 	 */
 	public Number optNumber(String key, Number defaultValue) {
@@ -1417,8 +1332,7 @@ public class JSONObject {
 	 * there is no such key. If the value is not a string and is not null, then it
 	 * is converted to a string.
 	 *
-	 * @param key
-	 *            A key string.
+	 * @param key A key string.
 	 * @return A string which is the value.
 	 */
 	public String optString(String key) {
@@ -1429,10 +1343,8 @@ public class JSONObject {
 	 * Get an optional string associated with a key. It returns the defaultValue if
 	 * there is no such key.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param defaultValue
-	 *            The default.
+	 * @param key          A key string.
+	 * @param defaultValue The default.
 	 * @return A string which is the value.
 	 */
 	public String optString(String key, String defaultValue) {
@@ -1446,8 +1358,7 @@ public class JSONObject {
 	 *
 	 * @see JSONObject#JSONObject(Object)
 	 *
-	 * @param bean
-	 *            the bean
+	 * @param bean the bean
 	 */
 	private void populateMap(Object bean) {
 		Class<?> klass = bean.getClass();
@@ -1530,13 +1441,10 @@ public class JSONObject {
 	 * Searches the class hierarchy to see if the method or it's super
 	 * implementations and interfaces has the annotation.
 	 *
-	 * @param <A>
-	 *            type of the annotation
+	 * @param                 <A> type of the annotation
 	 *
-	 * @param m
-	 *            method to check
-	 * @param annotationClass
-	 *            annotation to look for
+	 * @param m               method to check
+	 * @param annotationClass annotation to look for
 	 * @return the {@link Annotation} if the annotation exists on the current method
 	 *         or one of it's super class definitions
 	 */
@@ -1582,13 +1490,10 @@ public class JSONObject {
 	 * implementations and interfaces has the annotation. Returns the depth of the
 	 * annotation in the hierarchy.
 	 *
-	 * @param <A>
-	 *            type of the annotation
+	 * @param                 <A> type of the annotation
 	 *
-	 * @param m
-	 *            method to check
-	 * @param annotationClass
-	 *            annotation to look for
+	 * @param m               method to check
+	 * @param annotationClass annotation to look for
 	 * @return Depth of the annotation or -1 if the annotation is not on the method.
 	 */
 	private static int getAnnotationDepth(final Method m, final Class<? extends Annotation> annotationClass) {
@@ -1640,15 +1545,11 @@ public class JSONObject {
 	/**
 	 * Put a key/boolean pair in the JSONObject.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            A boolean which is the value.
+	 * @param key   A key string.
+	 * @param value A boolean which is the value.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, boolean value) throws JSONException {
 		return this.put(key, value ? Boolean.TRUE : Boolean.FALSE);
@@ -1658,15 +1559,11 @@ public class JSONObject {
 	 * Put a key/value pair in the JSONObject, where the value will be a JSONArray
 	 * which is produced from a Collection.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            A Collection value.
+	 * @param key   A key string.
+	 * @param value A Collection value.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, Collection<?> value) throws JSONException {
 		return this.put(key, new JSONArray(value));
@@ -1675,15 +1572,11 @@ public class JSONObject {
 	/**
 	 * Put a key/double pair in the JSONObject.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            A double which is the value.
+	 * @param key   A key string.
+	 * @param value A double which is the value.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, double value) throws JSONException {
 		return this.put(key, Double.valueOf(value));
@@ -1692,15 +1585,11 @@ public class JSONObject {
 	/**
 	 * Put a key/float pair in the JSONObject.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            A float which is the value.
+	 * @param key   A key string.
+	 * @param value A float which is the value.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, float value) throws JSONException {
 		return this.put(key, Float.valueOf(value));
@@ -1709,15 +1598,11 @@ public class JSONObject {
 	/**
 	 * Put a key/int pair in the JSONObject.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            An int which is the value.
+	 * @param key   A key string.
+	 * @param value An int which is the value.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, int value) throws JSONException {
 		return this.put(key, Integer.valueOf(value));
@@ -1726,15 +1611,11 @@ public class JSONObject {
 	/**
 	 * Put a key/long pair in the JSONObject.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            A long which is the value.
+	 * @param key   A key string.
+	 * @param value A long which is the value.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, long value) throws JSONException {
 		return this.put(key, Long.valueOf(value));
@@ -1744,15 +1625,11 @@ public class JSONObject {
 	 * Put a key/value pair in the JSONObject, where the value will be a JSONObject
 	 * which is produced from a Map.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            A Map value.
+	 * @param key   A key string.
+	 * @param value A Map value.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, Map<?, ?> value) throws JSONException {
 		return this.put(key, new JSONObject(value));
@@ -1762,17 +1639,13 @@ public class JSONObject {
 	 * Put a key/value pair in the JSONObject. If the value is <code>null</code>,
 	 * then the key will be removed from the JSONObject if it is present.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            An object which is the value. It should be of one of these types:
-	 *            Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or
-	 *            the JSONObject.NULL object.
+	 * @param key   A key string.
+	 * @param value An object which is the value. It should be of one of these
+	 *              types: Boolean, Double, Integer, JSONArray, JSONObject, Long,
+	 *              String, or the JSONObject.NULL object.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is non-finite number.
-	 * @throws NullPointerException
-	 *             If the key is <code>null</code>.
+	 * @throws JSONException        If the value is non-finite number.
+	 * @throws NullPointerException If the key is <code>null</code>.
 	 */
 	public JSONObject put(String key, Object value) throws JSONException {
 		if (key == null) {
@@ -1791,13 +1664,10 @@ public class JSONObject {
 	 * Put a key/value pair in the JSONObject, but only if the key and the value are
 	 * both non-null, and only if there is not already a member with that name.
 	 *
-	 * @param key
-	 *            string
-	 * @param value
-	 *            object
+	 * @param key   string
+	 * @param value object
 	 * @return this.
-	 * @throws JSONException
-	 *             if the key is a duplicate
+	 * @throws JSONException if the key is a duplicate
 	 */
 	public JSONObject putOnce(String key, Object value) throws JSONException {
 		if (key != null && value != null) {
@@ -1813,15 +1683,12 @@ public class JSONObject {
 	 * Put a key/value pair in the JSONObject, but only if the key and the value are
 	 * both non-null.
 	 *
-	 * @param key
-	 *            A key string.
-	 * @param value
-	 *            An object which is the value. It should be of one of these types:
-	 *            Boolean, Double, Integer, JSONArray, JSONObject, Long, String, or
-	 *            the JSONObject.NULL object.
+	 * @param key   A key string.
+	 * @param value An object which is the value. It should be of one of these
+	 *              types: Boolean, Double, Integer, JSONArray, JSONObject, Long,
+	 *              String, or the JSONObject.NULL object.
 	 * @return this.
-	 * @throws JSONException
-	 *             If the value is a non-finite number.
+	 * @throws JSONException If the value is a non-finite number.
 	 */
 	public JSONObject putOpt(String key, Object value) throws JSONException {
 		if (key != null && value != null) {
@@ -1850,8 +1717,7 @@ public class JSONObject {
 	 * Then this method will return the String "c". A JSONPointerException may be
 	 * thrown from code called by this method.
 	 * 
-	 * @param jsonPointer
-	 *            string that can be used to create a JSONPointer
+	 * @param jsonPointer string that can be used to create a JSONPointer
 	 * @return the item matched by the JSONPointer, otherwise null
 	 */
 	public Object query(String jsonPointer) {
@@ -1878,8 +1744,7 @@ public class JSONObject {
 	 * Then this method will return the String "c". A JSONPointerException may be
 	 * thrown from code called by this method.
 	 * 
-	 * @param jsonPointer
-	 *            string that can be used to create a JSONPointer
+	 * @param jsonPointer string that can be used to create a JSONPointer
 	 * @return the item matched by the JSONPointer, otherwise null
 	 */
 	public Object query(JSONPointer jsonPointer) {
@@ -1890,11 +1755,9 @@ public class JSONObject {
 	 * Queries and returns a value from this object using {@code jsonPointer}, or
 	 * returns null if the query fails due to a missing key.
 	 * 
-	 * @param jsonPointer
-	 *            the string representation of the JSON pointer
+	 * @param jsonPointer the string representation of the JSON pointer
 	 * @return the queried value or {@code null}
-	 * @throws IllegalArgumentException
-	 *             if {@code jsonPointer} has invalid syntax
+	 * @throws IllegalArgumentException if {@code jsonPointer} has invalid syntax
 	 */
 	public Object optQuery(String jsonPointer) {
 		return optQuery(new JSONPointer(jsonPointer));
@@ -1904,11 +1767,9 @@ public class JSONObject {
 	 * Queries and returns a value from this object using {@code jsonPointer}, or
 	 * returns null if the query fails due to a missing key.
 	 * 
-	 * @param jsonPointer
-	 *            The JSON pointer
+	 * @param jsonPointer The JSON pointer
 	 * @return the queried value or {@code null}
-	 * @throws IllegalArgumentException
-	 *             if {@code jsonPointer} has invalid syntax
+	 * @throws IllegalArgumentException if {@code jsonPointer} has invalid syntax
 	 */
 	public Object optQuery(JSONPointer jsonPointer) {
 		try {
@@ -1924,8 +1785,7 @@ public class JSONObject {
 	 * text to be delivered in HTML. In JSON text, a string cannot contain a control
 	 * character or an unescaped quote or backslash.
 	 *
-	 * @param string
-	 *            A String
+	 * @param string A String
 	 * @return A String correctly formatted for insertion in a JSON text.
 	 */
 	public static String quote(String string) {
@@ -2001,8 +1861,7 @@ public class JSONObject {
 	/**
 	 * Remove a name and its value, if present.
 	 *
-	 * @param key
-	 *            The name to be removed.
+	 * @param key The name to be removed.
 	 * @return The value that was associated with the name, or null if there was no
 	 *         value.
 	 */
@@ -2014,8 +1873,7 @@ public class JSONObject {
 	 * Determine if two JSONObjects are similar. They must contain the same set of
 	 * names which must be associated with similar values.
 	 *
-	 * @param other
-	 *            The other JSONObject
+	 * @param other The other JSONObject
 	 * @return true if they are equal
 	 */
 	public boolean similar(Object other) {
@@ -2058,8 +1916,7 @@ public class JSONObject {
 	 * Tests if the value should be tried as a decimal. It makes no test if there
 	 * are actual digits.
 	 * 
-	 * @param val
-	 *            value to test
+	 * @param val value to test
 	 * @return true if the string is "-0" or if it contains '.', 'e', or 'E', false
 	 *         otherwise.
 	 */
@@ -2073,12 +1930,11 @@ public class JSONObject {
 	 * Integer. When a Double is returned, it should always be a valid Double and
 	 * not NaN or +-infinity.
 	 * 
-	 * @param val
-	 *            value to convert
+	 * @param val value to convert
 	 * @return Number representation of the value.
-	 * @throws NumberFormatException
-	 *             thrown if the value is not a valid number. A public caller should
-	 *             catch this and wrap it in a {@link JSONException} if applicable.
+	 * @throws NumberFormatException thrown if the value is not a valid number. A
+	 *                               public caller should catch this and wrap it in
+	 *                               a {@link JSONException} if applicable.
 	 */
 	protected static Number stringToNumber(final String val) throws NumberFormatException {
 		char initial = val.charAt(0);
@@ -2138,8 +1994,7 @@ public class JSONObject {
 	 * Try to convert a string into a number, boolean, or null. If the string can't
 	 * be converted, return the string.
 	 *
-	 * @param string
-	 *            A String.
+	 * @param string A String.
 	 * @return A simple JSON value.
 	 */
 	// Changes to this method must be copied to the corresponding method in
@@ -2191,10 +2046,8 @@ public class JSONObject {
 	/**
 	 * Throw an exception if the object is a NaN or infinite number.
 	 *
-	 * @param o
-	 *            The object to test.
-	 * @throws JSONException
-	 *             If o is a non-finite number.
+	 * @param o The object to test.
+	 * @throws JSONException If o is a non-finite number.
 	 */
 	public static void testValidity(Object o) throws JSONException {
 		if (o != null) {
@@ -2213,12 +2066,10 @@ public class JSONObject {
 	/**
 	 * Produce a JSONArray containing the values of the members of this JSONObject.
 	 *
-	 * @param names
-	 *            A JSONArray containing a list of key strings. This determines the
-	 *            sequence of the values in the result.
+	 * @param names A JSONArray containing a list of key strings. This determines
+	 *              the sequence of the values in the result.
 	 * @return A JSONArray of values.
-	 * @throws JSONException
-	 *             If any of the values are non-finite numbers.
+	 * @throws JSONException If any of the values are non-finite numbers.
 	 */
 	public JSONArray toJSONArray(JSONArray names) throws JSONException {
 		if (names == null || names.isEmpty()) {
@@ -2273,14 +2124,12 @@ public class JSONObject {
 	 * <p>
 	 * <b> Warning: This method assumes that the data structure is acyclical. </b>
 	 *
-	 * @param indentFactor
-	 *            The number of spaces to add to each level of indentation.
+	 * @param indentFactor The number of spaces to add to each level of indentation.
 	 * @return a printable, displayable, portable, transmittable representation of
 	 *         the object, beginning with <code>{</code>&nbsp;<small>(left
 	 *         brace)</small> and ending with <code>}</code>&nbsp;<small>(right
 	 *         brace)</small>.
-	 * @throws JSONException
-	 *             If the object contains an invalid number.
+	 * @throws JSONException If the object contains an invalid number.
 	 */
 	public String toString(int indentFactor) throws JSONException {
 		StringWriter w = new StringWriter();
@@ -2303,13 +2152,11 @@ public class JSONObject {
 	 * <p>
 	 * Warning: This method assumes that the data structure is acyclical.
 	 *
-	 * @param value
-	 *            The value to be serialized.
+	 * @param value The value to be serialized.
 	 * @return a printable, displayable, transmittable representation of the object,
 	 *         beginning with <code>{</code>&nbsp;<small>(left brace)</small> and
 	 *         ending with <code>}</code>&nbsp;<small>(right brace)</small>.
-	 * @throws JSONException
-	 *             If the value is or contains an invalid number.
+	 * @throws JSONException If the value is or contains an invalid number.
 	 */
 	public static String valueToString(Object value) throws JSONException {
 		// moves the implementation to JSONWriter as:
@@ -2329,8 +2176,7 @@ public class JSONObject {
 	 * the java packages, turn it into a string. And if it doesn't, try to wrap it
 	 * in a JSONObject. If the wrapping fails, then null is returned.
 	 *
-	 * @param object
-	 *            The object to wrap
+	 * @param object The object to wrap
 	 * @return The wrapped value
 	 */
 	public static Object wrap(Object object) {
@@ -2451,12 +2297,9 @@ public class JSONObject {
 	 * <p>
 	 * <b> Warning: This method assumes that the data structure is acyclical. </b>
 	 *
-	 * @param writer
-	 *            Writes the serialized JSON
-	 * @param indentFactor
-	 *            The number of spaces to add to each level of indentation.
-	 * @param indent
-	 *            The indentation of the top level.
+	 * @param writer       Writes the serialized JSON
+	 * @param indentFactor The number of spaces to add to each level of indentation.
+	 * @param indent       The indentation of the top level.
 	 * @return The writer.
 	 * @throws JSONException
 	 */

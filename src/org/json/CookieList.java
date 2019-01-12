@@ -42,8 +42,7 @@ public class CookieList {
 	 * cookielistJSONObject.put(cookieJSONObject.getString("name"),
 	 * cookieJSONObject.getString("value"));
 	 * 
-	 * @param string
-	 *            A cookie list string
+	 * @param string A cookie list string
 	 * @return A JSONObject
 	 * @throws JSONException
 	 */
@@ -65,8 +64,7 @@ public class CookieList {
 	 * are separated by ';'. The characters '%', '+', '=', and ';' in the names and
 	 * values are replaced by "%hh".
 	 * 
-	 * @param jo
-	 *            A JSONObject
+	 * @param jo A JSONObject
 	 * @return A cookie list string
 	 * @throws JSONException
 	 */

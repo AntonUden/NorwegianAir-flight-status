@@ -82,11 +82,9 @@ public class JSONPointer {
 		 * query the property called {@code "a~b"} then you should simply pass the
 		 * {@code "a~b"} string as-is, there is no need to escape it as {@code "a~0b"}.
 		 * 
-		 * @param token
-		 *            the new token to be appended to the list
+		 * @param token the new token to be appended to the list
 		 * @return {@code this}
-		 * @throws NullPointerException
-		 *             if {@code token} is null
+		 * @throws NullPointerException if {@code token} is null
 		 */
 		public Builder append(String token) {
 			if (token == null) {
@@ -100,8 +98,7 @@ public class JSONPointer {
 		 * Adds an integer to the reference token list. Although not necessarily, mostly
 		 * this token will denote an array index.
 		 * 
-		 * @param arrayIndex
-		 *            the array index to be added to the token list
+		 * @param arrayIndex the array index to be added to the token list
 		 * @return {@code this}
 		 */
 		public Builder append(int arrayIndex) {
@@ -141,11 +138,10 @@ public class JSONPointer {
 	 * recommended to keep the {@code JSONPointer} instances due to performance
 	 * considerations.
 	 * 
-	 * @param pointer
-	 *            the JSON String or URI Fragment representation of the JSON
-	 *            pointer.
-	 * @throws IllegalArgumentException
-	 *             if {@code pointer} is not a valid JSON pointer
+	 * @param pointer the JSON String or URI Fragment representation of the JSON
+	 *                pointer.
+	 * @throws IllegalArgumentException if {@code pointer} is not a valid JSON
+	 *                                  pointer
 	 */
 	public JSONPointer(final String pointer) {
 		if (pointer == null) {
@@ -209,11 +205,9 @@ public class JSONPointer {
 	 * JSON values and in such case the returned value will be {@code document}
 	 * itself.
 	 * 
-	 * @param document
-	 *            the JSON document which should be the subject of querying.
+	 * @param document the JSON document which should be the subject of querying.
 	 * @return the result of the evaluation
-	 * @throws JSONPointerException
-	 *             if an error occurs during evaluation
+	 * @throws JSONPointerException if an error occurs during evaluation
 	 */
 	public Object queryFrom(Object document) throws JSONPointerException {
 		if (this.refTokens.isEmpty()) {
@@ -235,13 +229,10 @@ public class JSONPointer {
 	/**
 	 * Matches a JSONArray element by ordinal position
 	 * 
-	 * @param current
-	 *            the JSONArray to be evaluated
-	 * @param indexToken
-	 *            the array index in string form
+	 * @param current    the JSONArray to be evaluated
+	 * @param indexToken the array index in string form
 	 * @return the matched object. If no matching item is found a
-	 * @throws JSONPointerException
-	 *             is thrown if the index is out of bounds
+	 * @throws JSONPointerException is thrown if the index is out of bounds
 	 */
 	private Object readByIndexToken(Object current, String indexToken) throws JSONPointerException {
 		try {
@@ -278,8 +269,7 @@ public class JSONPointer {
 	 * inserted is '~'. The chars to be escaped are ~, which maps to ~0, and /,
 	 * which maps to ~1. Backslashes and double quote chars are also escaped.
 	 * 
-	 * @param token
-	 *            the JSONPointer segment value to be escaped
+	 * @param token the JSONPointer segment value to be escaped
 	 * @return the escaped value for the token
 	 */
 	private String escape(String token) {

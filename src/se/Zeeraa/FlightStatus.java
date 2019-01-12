@@ -134,7 +134,7 @@ public class FlightStatus {
 
 			try {
 				int s = Integer.parseInt(speed.replace(" km/h", ""));
-				if(maxSpeed < s) {
+				if (maxSpeed < s) {
 					maxSpeed = s;
 					maxSpeedLabel.setText("Max speed: " + maxSpeed + " km/h");
 				}
